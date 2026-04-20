@@ -1,7 +1,8 @@
 .PHONY: all app test clean lint
 
 CC       := musl-gcc
-CFLAGS   := -Wall -Wextra -ffreestanding -nostdlib -nostartfiles -fstack-protector-all
+INCLUDES = -Iinclude
+CFLAGS   := -Wall -Wextra -ffreestanding -nostdlib -nostartfiles -fstack-protector-all $(INCLUDES)
 SRCDIR   := src
 BUILDDIR := build
 
