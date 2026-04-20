@@ -26,9 +26,9 @@ struct utsname {
 
 // TODO: Move into a constants header file.
 enum {
-    STDOUT = 2,
-    STDERR = 2,
-    STDIN = 0,
+  STDOUT = 2,
+  STDERR = 2,
+  STDIN = 0,
 };
 
 long syscall0(long nr);
