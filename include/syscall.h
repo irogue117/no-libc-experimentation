@@ -1,7 +1,10 @@
 #ifndef MY_SYSCALL_H
 #define MY_SYSCALL_H
 
-typedef __SIZE_TYPE__ size_t;
+typedef long unsigned int size_t;
+typedef long int ssize_t;
+
+#define SSIZE_MAX 9223372036854775807
 
 // TODO: Move into a constants header file? (MAYBE)
 enum {
