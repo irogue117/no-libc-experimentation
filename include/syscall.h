@@ -3,10 +3,29 @@
 
 typedef __SIZE_TYPE__ size_t;
 
+// TODO: Move into a constants header file? (MAYBE)
 enum {
   SYS_write = 1,
   SYS_exit = 60,
   SYS_exit_group = 231,
+  SYS_uname = 63,
+};
+
+// Output struct for SYS_uname
+// TODO: Move into some other file.
+struct utsname {
+  char sysname[65];
+  char nodename[65];
+  char release[65];
+  char version[65];
+  char machine[65];
+};
+
+// TODO: Move into a constants header file.
+enum {
+    STDOUT = 2,
+    STDERR = 2,
+    STDIN = 0,
 };
 
 long syscall0(long nr);
