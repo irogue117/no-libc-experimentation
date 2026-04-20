@@ -8,7 +8,8 @@ static inline void sys_exit(int status) { syscall2(SYS_exit, status, 0); }
 
 const char MSG[] = "NO LIBC B)\n";
 const char arch_str[] = "x86_64";
-const char arch_wrong_msg[] = "Wrong CPU architecture, this only works on x86_64.\n";
+const char arch_wrong_msg[] =
+    "Wrong CPU architecture, this only works on x86_64.\n";
 
 struct utsname u = {0};
 
@@ -54,11 +55,12 @@ void _start(void) {
     goto exit_error;
   }
 
-  int arch_match = arr_equal(arch_str, sizeof(arch_str) - 1, u.machine, str_size);
+  int arch_match =
+      arr_equal(arch_str, sizeof(arch_str) - 1, u.machine, str_size);
 
   if (!arch_match) {
-      sys_write(STDERR, arch_wrong_msg, sizeof(arch_wrong_msg) - 1);
-      goto exit;
+    sys_write(STDERR, arch_wrong_msg, sizeof(arch_wrong_msg) - 1);
+    goto exit;
   }
 
   sys_write(STDOUT, MSG, sizeof(MSG) - 1);
