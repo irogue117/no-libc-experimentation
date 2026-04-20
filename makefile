@@ -2,7 +2,7 @@
 
 CC       := musl-gcc
 INCLUDES = -Iinclude
-CFLAGS   := -Wall -Wextra -ffreestanding -nostdlib -nostartfiles -fstack-protector-all $(INCLUDES)
+CFLAGS   := -Wall -Wextra -O3 -ffreestanding -nostdlib -nostartfiles -fstack-protector-all $(INCLUDES)
 DEBUGFLAGS := -g3 -O0 -DDEBUG
 SRCDIR   := src
 BUILDDIR := build
