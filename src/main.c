@@ -13,7 +13,9 @@ const char arch_wrong_msg[] =
 
 struct utsname u = {0};
 
-static _Bool arr_equal(const char *arr1, const size_t len1, const char *arr2,
+// 1 on equal.
+// 0 on not equal.
+static int arr_equal(const char *arr1, const size_t len1, const char *arr2,
                        const size_t len2) {
   size_t i = 0;
 
@@ -31,7 +33,7 @@ static _Bool arr_equal(const char *arr1, const size_t len1, const char *arr2,
 }
 
 // Returns error if len > SSIZE_MAX.
-static ssize_t sentinel_index(const char *arr, const size_t len,
+static ssize_t sentinel_pos(const char *arr, const size_t len,
                               const char sentinel) {
   if (len > SSIZE_MAX) {
     return -1;
@@ -50,7 +52,7 @@ static ssize_t sentinel_index(const char *arr, const size_t len,
 void _start(void) {
   syscall1(SYS_uname, (long)&u);
 
-  ssize_t str_size = sentinel_index(u.machine, sizeof(u.machine), '\0');
+  ssize_t str_size = sentinel_pos(u.machine, sizeof(u.machine), '\0');
   if (str_size == -1) {
     goto exit_error;
   }
